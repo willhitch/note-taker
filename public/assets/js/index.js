@@ -6,6 +6,7 @@ const $noteList = $(".list-container .list-group")
 
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {}
+let identifier = 0
 
 // A function for getting all notes from the db
 const getNotes = () => {
@@ -52,6 +53,7 @@ const renderActiveNote = () => {
 // Get the note data from the inputs, save it to the db and update the view
 const handleNoteSave = function () {
   const newNote = {
+    id: identifier,
     title: $noteTitle.val(),
     text: $noteText.val(),
   }
@@ -60,6 +62,8 @@ const handleNoteSave = function () {
     getAndRenderNotes()
     renderActiveNote()
   })
+
+  identifier++
 }
 
 // Delete the clicked note
